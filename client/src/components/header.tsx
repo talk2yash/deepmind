@@ -28,7 +28,7 @@ export function Header() {
   ];
 
   const isActive = (item: typeof navigation[0]) => {
-    if (item.type === "link") {
+    if (item.type === "link" && item.href) {
       if (item.href === "/") return location === "/";
       return location.startsWith(item.href);
     }
@@ -54,7 +54,7 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {navigation.map((item) => (
-              item.type === "link" ? (
+              item.type === "link" && item.href ? (
                 <Link key={item.name} href={item.href}>
                   <Button
                     variant="ghost"
@@ -99,7 +99,7 @@ export function Header() {
             <SheetContent side="right" className="w-[300px]">
               <div className="flex flex-col gap-4 mt-8">
                 {navigation.map((item) => (
-                  item.type === "link" ? (
+                  item.type === "link" && item.href ? (
                     <Link key={item.name} href={item.href} onClick={() => setIsOpen(false)}>
                       <Button
                         variant="ghost"
