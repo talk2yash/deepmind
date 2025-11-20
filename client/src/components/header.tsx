@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Shield } from "lucide-react";
+import { Menu } from "lucide-react";
 import { scrollManager } from "@/lib/scrollManager";
 
 export function Header() {
@@ -42,9 +42,11 @@ export function Header() {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center gap-2 hover-elevate px-2 py-1 rounded-md -ml-2 cursor-pointer" data-testid="link-logo">
-              <div className="w-8 h-8 rounded-md bg-primary/10 text-primary flex items-center justify-center">
-                <Shield className="w-5 h-5" />
-              </div>
+              <img
+                src="/deepmind logo.png"
+                alt="DeepMinds Logo"
+                className="w-8 h-8 object-contain"
+              />
               <span className="text-xl font-bold">DeepMinds</span>
             </div>
           </Link>
@@ -54,8 +56,8 @@ export function Header() {
             {navigation.map((item) => (
               item.type === "link" ? (
                 <Link key={item.name} href={item.href}>
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     className={isActive(item) ? "bg-accent" : ""}
                     data-testid={`nav-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                   >
@@ -63,9 +65,9 @@ export function Header() {
                   </Button>
                 </Link>
               ) : (
-                <Button 
+                <Button
                   key={item.name}
-                  variant="ghost" 
+                  variant="ghost"
                   onClick={() => scrollToSection(item.sectionId!)}
                   data-testid={`nav-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                 >
@@ -99,8 +101,8 @@ export function Header() {
                 {navigation.map((item) => (
                   item.type === "link" ? (
                     <Link key={item.name} href={item.href} onClick={() => setIsOpen(false)}>
-                      <Button 
-                        variant="ghost" 
+                      <Button
+                        variant="ghost"
                         className={`w-full justify-start ${isActive(item) ? "bg-accent" : ""}`}
                         data-testid={`mobile-nav-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                       >
@@ -108,9 +110,9 @@ export function Header() {
                       </Button>
                     </Link>
                   ) : (
-                    <Button 
+                    <Button
                       key={item.name}
-                      variant="ghost" 
+                      variant="ghost"
                       className="w-full justify-start"
                       onClick={() => {
                         scrollToSection(item.sectionId!);
