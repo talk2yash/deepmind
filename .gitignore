@@ -4,11 +4,3 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
-
-# Unwanted files
-attached_assets/
-*.pdf
-*.docx
-*.doc
-generated_images/
-design_guidelines.md
